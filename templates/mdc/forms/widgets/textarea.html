@@ -1,0 +1,4 @@
+<div class="mdc-text-field mdc-text-field--textarea{% if widget.attrs.disabled %} mdc-text-field--disabled{% endif %}"{% if widget.auto_init %} data-mdc-auto-init="MDCTextField"{% endif %}>
+  {% include "django/forms/widgets/textarea.html" %}{% if widget.label %}
+  <label for="{{ widget.attrs.id }}" class="mdc-text-field__label">{{ widget.label }}</label>{% endif %}
+</div>

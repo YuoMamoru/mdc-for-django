@@ -1,0 +1,6 @@
+*.prof
+*.pyc
+*.mo
+
+.DS_Store
+Thumbs.db

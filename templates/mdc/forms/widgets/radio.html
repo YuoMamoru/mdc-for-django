@@ -1,0 +1,4 @@
+{% with id=widget.attrs.id %}<fieldset{% if id %} id="{{ id }}"{% endif %} class="mdcd-fieldset">{% if widget.label %}
+<legend class="mdc-text-field__label mdc-text-field__label--float-above">{{ widget.label }}</legend>{% endif %}{% for group, options, index in widget.optgroups %}{% for option in options %}
+{% include option.template_name with widget=option auto_init=widget.auto_init %}{% endfor %}{% endfor %}
+</fieldset>{% endwith %}

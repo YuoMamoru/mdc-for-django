@@ -1,0 +1,6 @@
+{% if hint %}<div>{% endif %}<div class="mdc-text-field{% if dense %} mdc-text-field--dense{% endif %}{% if widget.attrs.disabled %} mdc-text-field--disabled{% endif %}{% if widget.attrs.autofocus %} mdc-text-field--focused{% endif %}"{% if widget.auto_init %} data-mdc-auto-init="MDCTextField"{% endif %}>
+  {% include "django/forms/widgets/input.html" %}{% if widget.label %}
+  <label class="mdc-floating-label{% if widget.attrs.autofocus %} mdc-floating-label--float-above{% endif %}" for="{{ widget.attrs.id }}">{{ widget.label }}</label>{% endif %}
+  <div class="mdc-line-ripple{% if widget.attrs.autofocus %} mdc-line-ripple--active{% endif %}"></div>
+</div>{% if hint %}
+<p class="mdc-text-field-helper-text{% if persistent %} mdc-text-field-helper-text--persistent{% endif %}{% if valid_msg %} mdc-text-field-helper-text--validation-msg{% endif %}">{{ hint }}</p></div>{% endif %}

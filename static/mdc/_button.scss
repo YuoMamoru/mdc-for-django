@@ -1,0 +1,82 @@
+@import "@theme-colors/theme-colors";
+@import "@material/theme/variables";
+@import "@material/button/mixins";
+
+.mdc-button {
+  // Secondary Text Button
+  &.secondary-text-button {
+    @include mdc-button-ink-color($mdc-theme-secondary);
+    @include mdc-states(secondary);
+  }
+
+  // Secondary Filled Button
+  &.secondary-filled-button {
+    @include mdc-button-filled-accessible($mdc-theme-secondary);
+  }
+
+  // Icon Button (NOT Floating Action Button)
+  &.mdcd-icon-button {
+    display: inline-flex;
+    justify-content: center;
+    width: 56px;
+    min-width: initial;
+    height: 56px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    fill: currentColor;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+
+    &.mdcd-icon-button--mini {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &--raised,
+  &--unelevated {
+    @include mdc-button-ink-color(on-primary);
+  }
+}
+
+////////////////////////////////////////////////////////////////
+//      Button Like
+////////////////////////////////////////////////////////////////
+.mdcd-button-like {
+  display: inline-block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  min-width: 88px;
+  height: 36px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+  color: map-get($mdc-theme-property-values, text-primary-on-background);
+  color: var(--mdc-theme-text-primary-on-background, map-get($mdc-theme-property-values, text-primary-on-background));
+  font-family: Roboto, sans-serif;
+  font-size: .875rem;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-weight: #{map-get($mdc-typography-font-weight-values, medium)};
+  letter-spacing: .04em;
+  line-height: 2.25rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-appearance: none;
+  overflow: hidden;
+  vertical-align: middle;
+
+  &.mdcd-button--disabled {
+    color: map-get($mdc-theme-property-values, text-disabled-on-light);
+    color: var(--mdc-theme-text-disabled-on-primary-light, map-get($mdc-theme-property-values, text-disabled-on-light));
+    cursor: default;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,22 @@
+@import "@material/theme/variables";
+
+$secondary-ink-color: map-get($mdc-theme-property-values, text-secondary-on-background);
+
+.mdcd-card__primary {
+  padding: 1rem;
+}
+
+.mdcd-card__title {
+  margin: 0;
+}
+
+.mdcd-card__subtitle {
+  color: $secondary-ink-color;
+  color: var(--mdc-theme-text-secondary-on-background, $secondary-ink-color);
+}
+
+.mdcd-card__secondary {
+  padding: 0 1rem 8px;
+  color: $secondary-ink-color;
+  color: var(--mdc-theme-text-secondary-on-background, $secondary-ink-color);
+}

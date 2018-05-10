@@ -1,0 +1,5 @@
+<div class="mdc-select"{% if widget.auto_init %} data-mdc-auto-init="MDCSelect"{% endif %}>
+  {% include "django/forms/widgets/select.html" %}{% if widget.label %}
+  <label class="mdc-floating-label" for="{{ widget.attrs.id }}">{{ widget.label }}</label>{% endif %}
+  <div class="mdc-line-ripple"></div>
+</div>

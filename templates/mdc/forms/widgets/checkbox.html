@@ -1,0 +1,12 @@
+<div class="mdc-form-field"{% if widget.auto_init %} data-mdc-auto-init="MDCFormField"{% endif %}>
+  <div class="mdc-checkbox"{% if widget.auto_init %} data-mdc-auto-init="MDCCheckbox"{% endif %}>
+    {% include "django/forms/widgets/input.html" %}
+    <div class="mdc-checkbox__background">
+      <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+        <path class="mdc-checkbox__checkmark-path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+      </svg>
+      <div class="mdc-checkbox__mixedmark"></div>
+    </div>
+  </div>
+  <label for="{{ widget.attrs.id }}">{{ widget.label }}</label>
+</div>

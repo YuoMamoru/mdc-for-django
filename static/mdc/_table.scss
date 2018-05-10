@@ -1,0 +1,217 @@
+@import "@theme-colors/theme-colors";
+@import "@material/theme/variables";
+@import "@material/typography/variables";
+
+////////////////////////////////////////////////////////////////
+//      Data Table
+////////////////////////////////////////////////////////////////
+
+$theme-table-colors: (
+  dark: (
+    border: rgba(black, .12),
+    hover: rgba(black, .04)
+  ),
+  light: (
+    border: rgba(white, .23),
+    hover: rgba(white, .08)
+  )
+);
+
+@function mdcd-theme-table-color-for-fill_($style, $fill-color) {
+  $contrast-tone: mdc-theme-contrast-tone($fill-color);
+
+  @return map-get(map-get($theme-table-colors, $contrast-tone), $style);
+}
+
+$table-border: 1px solid mdcd-theme-table-color-for-fill_(border, $mdc-theme-background);
+$text-color: map-get($mdc-theme-property-values, text-primary-on-background);
+$text-color--header: map-get($mdc-theme-property-values, text-secondary-on-background);
+$background-color: $mdc-theme-background;
+$background-color--hover: mdcd-theme-table-color-for-fill_(hover, $mdc-theme-background);
+
+.mdcd-data-table {
+  position: relative;
+  border: $table-border;
+  background-color: $background-color;
+  color: $text-color;
+  color: var(--mdc-theme-text-primary-on-background, $text-color);
+  font-family: Roboto, sans-serif;
+  font-size: .8125rem;
+  font-weight: #{map-get($mdc-typography-font-weight-values, nomal)};
+  white-space: nowrap;
+  border-collapse: collapse;
+
+  > thead > tr {
+    border-bottom: $table-border;
+  }
+
+  > tbody > tr:not(:first-of-type),
+  > tfoot > tr {
+    border-top: $table-border;
+  }
+
+  > thead,
+  > tfoot {
+    > td,
+    > th {
+      height: 56px;
+      color: $text-color--header;
+      color: var(--mdc-theme-text-secondary-on-background, $text-color--header);
+      font-size: .75rem;
+    }
+  }
+
+  > tbody {
+    > tr {
+      position: relative;
+      transition-duration: .28s;
+      transition-property: background-color;
+      transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+
+      > td,
+      > th {
+        height: 48px;
+      }
+
+      > td .mdc-button {  // stylelint-disable-line selector-max-compound-selectors
+        min-width: initial;
+        height: 23px;
+        line-height: 23px;
+      }
+    }
+  }
+
+  > thead,
+  > tfoot,
+  > tbody {
+    > tr > td,
+    > tr > th {
+      position: relative;
+      box-sizing: border-box;
+      padding: 12px 18px;
+      vertical-align: middle;
+
+      &:first-of-type {
+        padding-left: 24px;
+      }
+
+      &:last-of-type {
+        padding-right: 24px;
+      }
+    }
+  }
+
+  ////////////////////////////////////////////////////////////////
+  //      Cell
+  ////////////////////////////////////////////////////////////////
+  &__cell--numeric {
+    text-align: right;
+  }
+
+
+  ////////////////////////////////////////////////////////////////
+  //      Header
+  ////////////////////////////////////////////////////////////////
+  &__header {
+    color: $text-color--header;
+    color: var(--mdc-theme-text-secondary-on-light, $text-color--header);
+    font-size: .75rem;
+    font-weight: #{map-get($mdc-typography-font-weight-values, medium)};
+    letter-spacing: 0;
+    text-overflow: ellipsis;
+
+    .mdcd-data-table__sortable-title {
+      color: $text-color--header;
+      color: var(--mdc-theme-text-secondary-on-background, $text-color--header);
+      text-decoration: none;
+    }
+
+    &--sorted-ascending,
+    &--sorted-descending {
+      &::after {
+        display: inline-block;
+        margin-right: 5px;
+        font-family: "Material Icons";
+        font-size: 20px;
+        -webkit-font-smoothing: antialiased;
+        font-style: normal;
+        font-weight: #{map-get($mdc-typography-font-weight-values, normal)};
+        letter-spacing: normal;
+        line-height: 1;
+        text-transform: none;
+        content: "\e5c7";
+        vertical-align: middle;
+        word-wrap: normal;
+        -moz-font-feature-settings: "liga";
+        -webkit-font-feature-settings: "liga";
+        font-feature-settings: "liga";
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        &::after {  // stylelint-disable-line max-nesting-depth
+          color: rgba(black, .26);
+        }
+      }
+
+      .mdcd-data-table__sortable-title {
+        color: $text-color;
+        color: var(--mdc-theme-text-primary-on-background, $text-color);
+        text-decoration: none;
+      }
+    }
+
+    &--sorted-descending {
+      &::after {
+        content: "\e5c5";
+      }
+    }
+  }
+
+  ////////////////////////////////////////////////////////////////
+  //      Selected Row
+  ////////////////////////////////////////////////////////////////
+  &__row--is-selected,
+  > tbody > tr:hover {
+    background-color: $background-color--hover;
+  }
+
+  ////////////////////////////////////////////////////////////////
+  //      Pagenator
+  ////////////////////////////////////////////////////////////////
+  &__paginator {
+    text-align: right;
+
+    .mdc-button,
+    .mdcd-button-like {
+      min-width: inherit;
+      padding: 0 8px;
+    }
+
+    .mdcd-button-like {
+      color: $text-color--header;
+      color: var(--mdc-theme-text-secondary-on-background, $text-color--header);
+      font-size: .75rem;
+
+      &.current {
+        background-color: $mdc-theme-primary-light;
+        background-color: var(--mdc-theme-primary-light, $mdc-theme-primary-light);
+        color: map-get($mdc-theme-property-values, on-primary);
+        color: var(--mdc-theme-on-primary, map-get($mdc-theme-property-values, on-primary));
+      }
+    }
+
+    .material-icons {
+      height: 32px;
+      font-size: 1rem;
+      line-height: 32px;
+    }
+
+    &__total-count {
+      :not(:last-child) {
+        margin-right: 30px;
+      }
+    }
+  }
+}

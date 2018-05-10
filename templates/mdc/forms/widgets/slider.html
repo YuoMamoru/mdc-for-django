@@ -1,0 +1,17 @@
+<div aria-valuenow="{{ widget.value|stringformat:'s' }}"{% if widget.auto_init %} data-mdc-auto-init="MDCSlider"{% endif %}{% include "django/forms/widgets/attrs.html" %}>
+  <div class="mdc-slider__track-container">
+    <div class="mdc-slider__track"></div>{% if displaymerkers %}
+    <div class="mdc-slider__track-marker-container"></div>{% endif %}
+  </div>
+  <div class="mdc-slider__thumb-container">{% if discrete %}
+    <div class="mdc-slider__pin">
+      <span class="mdc-slider__pin-value-marker">{{ widget.value|stringformat:'s' }}</span>
+    </div>{% endif %}
+    <svg class="mdc-slider__thumb" width="21" height="21">
+      <circle cx="10.5" cy="10.5" r="7.875"></circle>
+    </svg>
+    <div class="mdc-slider__focus-ring"></div>
+  </div>{% if widget.label %}
+  <span class="mdc-text-field__label mdc-text-field__label--float-above">{{ widget.label }}</span>{% endif %}{% if usesform %}
+  <input type="hidden" name="{{ widget.name }}" value="{{ widget.value|stringformat:'s' }}" />{% endif %}
+</div>

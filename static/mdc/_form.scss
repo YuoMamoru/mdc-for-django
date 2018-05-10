@@ -1,0 +1,33 @@
+////////////////////////////////////////////////////////////////
+//      Form
+////////////////////////////////////////////////////////////////
+.mdc-list {
+  &.mdcd-list--form-list {
+    padding: 8px 0 0;
+
+    > .mdc-list-item {
+      height: 78px;
+      overflow: inherit;
+    }
+  }
+}
+
+.mdc-form-field + .mdc-select {
+  -webkit-margin-start: 22px;
+}
+
+.mdcd-fieldset {
+  position: relative;
+  min-width: initial;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.mdc-text-field-helptext {
+  line-height: 1.15;
+}
+
+.mdc-select__label {
+  white-space: nowrap;
+}

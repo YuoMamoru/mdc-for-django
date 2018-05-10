@@ -1,0 +1,9 @@
+@import "@theme-colors/theme-colors";
+@import "@material/theme/variables";
+
+body {
+  background-color: $mdc-theme-background;
+  background-color: var(--mdc-theme-background, $mdc-theme-background);
+  color: map-get($mdc-theme-property-values, text-primary-on-background);
+  color: var(--mdc-theme-text-primary-on-background, map-get($mdc-theme-property-values, text-primary-on-background));
+}

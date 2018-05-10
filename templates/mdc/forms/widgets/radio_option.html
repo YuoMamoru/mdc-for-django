@@ -1,0 +1,10 @@
+<div class="mdc-form-field"{% if auto_init %} data-mdc-auto-init="MDCFormField"{% endif %}>
+  <div class="mdc-radio"{% if auto_init %} data-mdc-auto-init="MDCRadio"{% endif %}>
+    {% include "django/forms/widgets/input.html" %}
+    <div class="mdc-radio__background">
+      <div class="mdc-radio__outer-circle"></div>
+      <div class="mdc-radio__inner-circle"></div>
+    </div>
+  </div>{% if wrap_label %}
+  <label{% if widget.attrs.id %} for="{{ widget.attrs.id }}"{% endif %}>{{ widget.label }}</label>{% endif %}
+</div>
