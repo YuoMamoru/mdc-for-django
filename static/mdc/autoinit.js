@@ -1,7 +1,6 @@
 'use strict';
 
 (() => {
-  mdc.autoInit.register('MDCTabBarScroller', mdc.tabs.MDCTabBarScroller);
   mdc.autoInit();
   const setSliderHiddenField = (evt) => {
     const hidden = evt.currentTarget.querySelector('input[type="hidden"]');
